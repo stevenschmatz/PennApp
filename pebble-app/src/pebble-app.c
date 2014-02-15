@@ -15,7 +15,7 @@ static void timer_callback(void *data) {
 	DictionaryIterator *iter;
 	app_message_outbox_begin(&iter);
 	
-	Tuplet x_value_tuplet = TupletInteger(1, accel.x)
+	Tuplet x_value_tuplet = TupletInteger(1, accel.x);
 	Tuplet y_value_tuplet = TupletInteger(2, accel.y);
 	
 	dict_write_tuplet(iter, &x_value_tuplet);
