@@ -1,0 +1,33 @@
+System flow
+
+-- MINIMUM VIABLE PRODUCT --
+
+Assumes that the necessary software is pre-installed on the computer
+
+0. Calibration; "the quick brown fox jumps over the lazy dog" etc.
+1. User activates device, which in turn enables accelerometer gesture recognition software
+2. User connects device to computer
+3. User makes gesture to start a new document
+4. Gesture is relayed to computer via accelerometer; feedback is displayed on computer ("OK, document created."); file writing stream opened
+5. Gesture recognition software begins listening for gestures
+6. Gestures are sent from device to computer
+7. Computer runs gesture sequences through neural network
+8. Neural network determines which character each gesture sequence is likely to be
+9. For each determined character, buffer the character to a text file
+10. After finishing, the user makes a gesture to close the document
+11. Listening software is disabled; stream closes; computer displays the contents of the text file 
+
+-- INTENDED PRODUCT --
+
+1. User installs Pen App on their iPhone
+2. Calibration; "the quick brown fox jumps over the lazy dog" etc.
+3. User activates device, which in turn enables accelerometer gesture recognition software
+4. User makes gesture to start a new document
+5. Gesture is relayed to iPhone via accelerometer and bluetooth; feedback is displayed on iPhone ("OK, document created."); Google Drive stream opened
+6. Gesture recognition software begins listening for gestures
+7. Gestures are sent via Bluetooth to iPhone
+8. iPhone runs gesture sequences through neural network (or relays the gestures to a server which performs the analysis)
+9. Neural network determines which character each gesture sequence is likely to be. If this is done on the iPhone, great. If not, the data will be relayed back to the iPhone from a server.
+10. For each determined character, buffer the character to the Google Drive write stream
+11. After finishing, the user makes a gesture to close the document
+12. Listening software is disabled; Google Drive stream closes; iPhone stores link to Google Drive file
