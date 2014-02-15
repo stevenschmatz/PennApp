@@ -8,6 +8,7 @@ static TextLayer *x_text_layer;
 static TextLayer *y_text_layer;
 
 static char x_accel_string[5];
+static char y_accel_string[5];
 
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
