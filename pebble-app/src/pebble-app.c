@@ -30,6 +30,9 @@ static void window_load(Window *window) {
   text_layer_set_text(text_layer, "Press a button");
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
+	
+	accel_data_service_subscribe(10, &accel_data_handler);
+	accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
 }
 
 static void window_unload(Window *window) {
@@ -62,9 +65,6 @@ int main(void) {
   init();
 
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-	
-	accel_data_service_subscribe(10, &accel_data_handler);
-	accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
 	
   app_event_loop();
   deinit();
