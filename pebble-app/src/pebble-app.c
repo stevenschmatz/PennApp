@@ -34,8 +34,6 @@ static void timer_callback(void *data) {
 	Tuplet x_value_tuplet = TupletInteger(1, accel.x);
 	Tuplet y_value_tuplet = TupletInteger(2, accel.y);
 	
-	app_log(1, "blah.c", 51, "tupling it up");
-	
 	dict_write_tuplet(iter, &x_value_tuplet);
 	dict_write_tuplet(iter, &y_value_tuplet);
 	
