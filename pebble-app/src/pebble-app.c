@@ -7,9 +7,6 @@ static AppTimer *timer;
 
 static TextLayer *text_layer;
 
-static char accel_x_string[5];
-static char accel_y_string[5];
-
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
@@ -18,14 +15,8 @@ static void timer_callback(void *data) {
 	DictionaryIterator *iter;
 	app_message_outbox_begin(&iter);
 	
-	static char x_key[1] = "x";
-	static char y_key[1] = "y";
-	
-	snprintf(accel_x_string, 5, "%d", accel.x);
-	snprintf(accel_y_string, 5, "%d", accel.y);
-	
-	Tuplet x_value_tuplet = TupletCString(x_key, accel_x_string);
-	Tuplet y_value_tuplet = TupletCString(y_key, accel_y_string);
+	Tuplet x_value_tuplet = TupletInteger(1, accel.x)
+	Tuplet y_value_tuplet = TupletInteger(2, accel.y);
 	
 	dict_write_tuplet(iter, &x_value_tuplet);
 	dict_write_tuplet(iter, &y_value_tuplet);
