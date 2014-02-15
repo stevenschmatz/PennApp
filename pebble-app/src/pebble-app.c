@@ -60,7 +60,10 @@ int main(void) {
   init();
 
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-
+	
+	accel_data_service_subscribe(10, &accel_data_handler);
+	accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
+	
   app_event_loop();
   deinit();
 }
