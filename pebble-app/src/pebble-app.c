@@ -4,7 +4,8 @@ static Window *window;
 
 static AppTimer *timer;
 
-static TextLayer *text_layer;
+static TextLayer *x_text_layer;
+static TextLayer *y_text_layer;
 
 static char x_accel_string[5];
 
@@ -14,8 +15,10 @@ static void timer_callback(void *data) {
   accel_service_peek(&accel);
 	
 	snprintf(x_accel_string, 5, "%d ", accel.x);
+	snprintf(y_accel_string, 5, "%d ", accel.y);
 	
-	text_layer_set_text(text_layer, x_accel_string);
+	text_layer_set_text(x_text_layer, x_accel_string);
+	text_layer_set_text(y_text_layer, y_accel_string);
 
   timer = app_timer_register(100, timer_callback, NULL);
 }
@@ -28,14 +31,17 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  text_layer = text_layer_create((GRect) { .origin = {0, 72}, .size = {bounds.size.w, 20}});
-	text_layer_set_text(text_layer, "Move me around");
-	text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
-  layer_add_child(window_layer, text_layer_get_layer(text_layer));
+  x_text_layer = text_layer_create((GRect) { .origin = {0, 72}, .size = {bounds.size.w, 20}});
+	y_text_layer = text_layer_create((GRect) { .origin = {0, 100}, .size = {bounds.size.w, 20}});
+	text_layer_set_text(x_text_layer, "Move me around");
+	text_layer_set_text_alignment(x_text_layer, GTextAlignmentCenter);
+	text_layer_set_text_alignment(y_text_layer, GTextAlignmentCenter);
+  layer_add_child(window_layer, text_layer_get_layer(x_text_layer));
 }
 
 static void window_unload(Window *window) {
-  text_layer_destroy(text_layer);
+  text_layer_destroy(x_text_layer);
+	text_layer_destroy(y_text_layer);
 }
 
 static void init(void) {
