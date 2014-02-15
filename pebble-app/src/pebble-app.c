@@ -7,6 +7,22 @@ static AppTimer *timer;
 
 static TextLayer *text_layer;
 
+void out_sent_handler(DictionaryIterator *sent, void *context) {
+	
+}
+
+void out_failed_handler(DictionaryIterator *failed, void *context) {
+	
+}
+
+void in_received_handler(DictionaryIterator *received, void *context) {
+	
+}
+
+void in_dropped_handler(AppMessageResult reason, void *context) {
+	
+}
+
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
@@ -25,7 +41,7 @@ static void timer_callback(void *data) {
 	
 	app_message_outbox_send();
 		
-  timer = app_timer_register(100, timer_callback, NULL);
+  timer = app_timer_register(200, timer_callback, NULL);
 }
 
 static void handle_accel(AccelData *accel_data, uint32_t num_samples) {
@@ -55,6 +71,15 @@ static void init(void) {
   window_stack_push(window, true /* Animated */);
 
   accel_data_service_subscribe(0, handle_accel);
+	
+	app_message_register_inbox_received(in_received_handler);
+	app_message_register_inbox_dropped(in_dropped_handler);
+	app_message_register_outbox_sent(out_sent_handler);
+	app_message_register_outbox_failed(out_failed_handler);
+	
+	const uint32_t inbound_size = 64;
+	const uint32_t outbound_size = 64;
+	app_message_open(inbound_size, outbound_size);
 
   timer = app_timer_register(100 /* milliseconds */, timer_callback, NULL);
 }
