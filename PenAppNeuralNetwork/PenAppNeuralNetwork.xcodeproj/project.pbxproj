@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		D703F99018AF1179004665E4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D703F98F18AF1179004665E4 /* main.cpp */; };
 		D703F99218AF1179004665E4 /* PenAppNeuralNetwork.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D703F99118AF1179004665E4 /* PenAppNeuralNetwork.1 */; };
+		D703F99D18AF3609004665E4 /* libopencv_core.2.4.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D703F99B18AF3609004665E4 /* libopencv_core.2.4.8.dylib */; };
+		D703F99E18AF3609004665E4 /* libopencv_ml.2.4.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D703F99C18AF3609004665E4 /* libopencv_ml.2.4.8.dylib */; };
+		D754B74218AF36C0003BE0AE /* SampledData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D754B74118AF36C0003BE0AE /* SampledData.cpp */; };
+		D754B74418AF37B4003BE0AE /* CollectedData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D754B74318AF37B4003BE0AE /* CollectedData.cpp */; };
+		D754B74618AF3B97003BE0AE /* SampleVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D754B74518AF3B97003BE0AE /* SampleVector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +36,11 @@
 		D703F99818AF16E6004665E4 /* CollectedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectedData.h; sourceTree = "<group>"; };
 		D703F99918AF17C1004665E4 /* SampledData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampledData.h; sourceTree = "<group>"; };
 		D703F99A18AF18B9004665E4 /* SampleVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleVector.h; sourceTree = "<group>"; };
+		D703F99B18AF3609004665E4 /* libopencv_core.2.4.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.2.4.8.dylib; path = ../../../../usr/local/lib/libopencv_core.2.4.8.dylib; sourceTree = "<group>"; };
+		D703F99C18AF3609004665E4 /* libopencv_ml.2.4.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_ml.2.4.8.dylib; path = ../../../../usr/local/lib/libopencv_ml.2.4.8.dylib; sourceTree = "<group>"; };
+		D754B74118AF36C0003BE0AE /* SampledData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampledData.cpp; sourceTree = "<group>"; };
+		D754B74318AF37B4003BE0AE /* CollectedData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollectedData.cpp; sourceTree = "<group>"; };
+		D754B74518AF3B97003BE0AE /* SampleVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SampleVector.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D703F99E18AF3609004665E4 /* libopencv_ml.2.4.8.dylib in Frameworks */,
+				D703F99D18AF3609004665E4 /* libopencv_core.2.4.8.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +59,8 @@
 		D703F98318AF1179004665E4 = {
 			isa = PBXGroup;
 			children = (
+				D703F99B18AF3609004665E4 /* libopencv_core.2.4.8.dylib */,
+				D703F99C18AF3609004665E4 /* libopencv_ml.2.4.8.dylib */,
 				D703F98E18AF1179004665E4 /* PenAppNeuralNetwork */,
 				D703F98D18AF1179004665E4 /* Products */,
 			);
@@ -65,8 +79,11 @@
 			children = (
 				D703F98F18AF1179004665E4 /* main.cpp */,
 				D703F99918AF17C1004665E4 /* SampledData.h */,
+				D754B74118AF36C0003BE0AE /* SampledData.cpp */,
 				D703F99A18AF18B9004665E4 /* SampleVector.h */,
+				D754B74518AF3B97003BE0AE /* SampleVector.cpp */,
 				D703F99818AF16E6004665E4 /* CollectedData.h */,
+				D754B74318AF37B4003BE0AE /* CollectedData.cpp */,
 				D703F99118AF1179004665E4 /* PenAppNeuralNetwork.1 */,
 			);
 			path = PenAppNeuralNetwork;
@@ -123,6 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D754B74418AF37B4003BE0AE /* CollectedData.cpp in Sources */,
+				D754B74218AF36C0003BE0AE /* SampledData.cpp in Sources */,
+				D754B74618AF3B97003BE0AE /* SampleVector.cpp in Sources */,
 				D703F99018AF1179004665E4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +221,11 @@
 		D703F99618AF1179004665E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -208,6 +233,11 @@
 		D703F99718AF1179004665E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -231,6 +261,7 @@
 				D703F99718AF1179004665E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
