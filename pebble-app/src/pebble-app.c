@@ -4,6 +4,8 @@
 static Window *window;
 static TextLayer *text_layer;
 
+static void accel_data_handler(AccelData *data, uint32_t num_samples);
+
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "Select");
 }
