@@ -16,6 +16,7 @@ function train(sampledData, char) {
 function accept(sampledData) {
 	for(int i = 0; i < SAMPLING_RATE; i++) {
 		var out = nets[i].run(sampledData[i]);
-		drive.write(out);
 	}
+	return decide(nets);
 }
+

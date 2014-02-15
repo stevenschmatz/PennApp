@@ -7,7 +7,8 @@ btSerial.on('found', function(address, name) {
 			btSerial.on('gestureData', function(buffer) {
 				var gesture = JSON.parse(buffer.toString('ascii'));
 				var sampledData = sample.split(buffer, 5);
-				neuralNetwork.accept(sampledData);
+				var result = neuralNetwork.accept(sampledData);
+				btSerial.write(new Buffer(result, 'utf-8'));
 			});
 		});
 	});
