@@ -40,7 +40,7 @@ static void window_unload(Window *window) {
 }
 
 static void timer_callback(void *data) {
-	AccelData accel = (AccelData) {.x = 0, .y = 0, .z = 0}
+	AccelData accel = (AccelData) {.x = 0, .y = 0, .z = 0};
 	accel_service_peek(&accel);
 	// two dimensions for now
 	int16_t x_accel = accel.x;
@@ -50,6 +50,10 @@ static void timer_callback(void *data) {
 	snprintf(x_accel_string, 5, "%d ", x_accel);
 	snprintf(y_accel_string, 5, "%d ", y_accel);
 	text_layer_set_text(text_layer, x_accel_string);
+}
+
+static void accel_data_handler(AccelData *data, uint32_t num_samples) {
+	//
 }
 
 static void init(void) {
@@ -71,10 +75,6 @@ static void init(void) {
 static void deinit(void) {
 	accel_data_service_unsubscribe();
   window_destroy(window);
-}
-
-static void accel_data_handler(AccelData *data, uint32_t num_samples) {
-	//
 }
 
 int main(void) {
