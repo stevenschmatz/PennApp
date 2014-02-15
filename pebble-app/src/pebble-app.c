@@ -6,11 +6,13 @@ static AppTimer *timer;
 
 static TextLayer *text_layer;
 
+static char x_accel_string[5];
+
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
   accel_service_peek(&accel);
-	char x_accel_string[5];
+	
 	snprintf(x_accel_string, 5, "%d ", accel.x);
 	
 	text_layer_set_text(text_layer, x_accel_string);
