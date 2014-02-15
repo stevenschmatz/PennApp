@@ -63,7 +63,7 @@ static void accel_data_handler(AccelData *data, uint32_t num_samples) {
 	int16_t y_accel = data->y;
 	char *x_accel_string;
 	char *y_accel_string;
-	itoa(x_accel, x_accel_string, 10);
+	sprintf(x_accel_string, "%d", x_accel);
 	text_layer_set_text(text_layer, x_accel_string);
 }
 
