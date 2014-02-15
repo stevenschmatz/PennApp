@@ -9,11 +9,11 @@ static TextLayer *text_layer;
 static char accel_string[10];
 
 static void out_sent_handler(DictionaryIterator *sent, void *context) {
-	app_message_out_release();
+	app_message_outbox_release();
 }
 
 static void out_fail_handler(DictionaryIterator *failed, AppMessageResult reason, void *context) {
-	app_message_out_release();
+	app_message_outbox_release();
 }
 
 static void in_rcv_handler(void *context, AppMessageResult reason) {
@@ -24,32 +24,26 @@ static void in_drp_handler(void *context, AppMessageResult reason) {
 	
 }
 
-static PebbleAppHandlers s_handlers = {
-	.messaging_info = {
-		.default_callbacks.callbacks = {
-			.out_sent = my_out_sent_handler,
-			.out_failed = my_out_fail_handler,
-			.in_received = my_in_rcv_handler,
-			.in_dropped = my_in_drp_handler,
-		},
-	},
-};
-
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
   accel_service_peek(&accel);
 	
 	static DictionaryIterator *iter;
-	app_message_out_get(&iter);
+	app_message_outbox_get(&iter);
 	
 	char x[1] = "x";
 	char y[1] = "y";
 	
-	dict_write_data(&iter, x, accel.x);
-	dict_write_data(&iter, y, accel.y);
+	char accel_x_string[5]; 
+	char accel_y_string[5];
+	snprintf(accel_x_string, 5, "%d", accel.x);
+	snprintf(accel_y_string, 5, "%d", accel.y);
 	
-	app_message_out_send();
+	dict_write_data(&iter, x, accel_x_string);
+	dict_write_data(&iter, y, accel_y_string);
+	
+	app_message_outbox_send();
 		
   timer = app_timer_register(100, timer_callback, NULL);
 }
