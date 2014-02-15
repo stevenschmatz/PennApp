@@ -13,7 +13,7 @@ static void timer_callback(void *data) {
 
   accel_service_peek(&accel);
 	
-	snprintf(accel_string, 5, "%d\n%d", accel.x, accel.y);
+	snprintf(accel_string, 5, "%d %d", accel.x, accel.y);
 	
 	text_layer_set_text(text_layer, accel_string);
 
