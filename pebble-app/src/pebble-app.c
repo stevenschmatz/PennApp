@@ -36,7 +36,7 @@ static void window_load(Window *window) {
 	y_text_layer = text_layer_create((GRect) { .origin = {0, 100}, .size = {bounds.size.w, 20}});
 	text_layer_set_text(x_text_layer, "Move me around");
 	text_layer_set_text_alignment(x_text_layer, GTextAlignmentCenter);
-	text_layer_set_text_alignment(y_text_layer, GTextAlignmentCenter);
+	text_layer_set_text_alignment(y_text_layer, GTextAlignmentRight);
   layer_add_child(window_layer, text_layer_get_layer(x_text_layer));
 }
 
