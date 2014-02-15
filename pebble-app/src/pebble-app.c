@@ -61,10 +61,10 @@ static void accel_data_handler(AccelData *data, uint32_t num_samples) {
 	// two dimensions for now
 	int16_t x_accel = data->x;
 	int16_t y_accel = data->y;
-	char *x_accel_string = (char*) malloc(5);
-	char *y_accel_string = (char*) malloc(5);
-	sprintf(x_accel_string, "%d ", x_accel);
-	sprintf(y_accel_string, "%d ", y_accel);
+	char x_accel_string[5];
+	char y_accel_string[5];
+	snprintf(x_accel_string, 5, "%d ", x_accel);
+	snprintf(y_accel_string, 5, "%d ", y_accel);
 	text_layer_set_text(text_layer, strcat(x_accel_string, y_accel_string));
 }
 
