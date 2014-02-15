@@ -1,5 +1,6 @@
 #include <pebble.h>
 #include <string.h>
+#include <stdlib.h>
 
 static Window *window;
 static TextLayer *text_layer;
@@ -60,6 +61,9 @@ static void accel_data_handler(AccelData *data, uint32_t num_samples) {
 	// two dimensions for now
 	int16_t x_accel = data->x;
 	int16_t y_accel = data->y;
+	char *x_accel_string;
+	char *y_accel_string;
+	itoa(x_accel, x_accel_string, 10);
 	text_layer_set_text(text_layer, itoa((int)x_accel));
 }
 
