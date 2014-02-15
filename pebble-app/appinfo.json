@@ -1,0 +1,17 @@
+{
+  "uuid": "5f088ce2-3b4e-43cd-8d60-25b4961f1b4f",
+  "shortName": "pebble-app",
+  "longName": "pebble-app",
+  "companyName": "MakeAwesomeHappen",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
