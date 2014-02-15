@@ -4,8 +4,7 @@
 
 static Window *window;
 static TextLayer *text_layer;
-
-static void accel_data_handler(AccelData *data, uint32_t num_samples);
+static AppTimer *timer;
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "Select");
@@ -34,12 +33,23 @@ static void window_load(Window *window) {
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
 	
-	accel_data_service_subscribe(10, &accel_data_handler);
-	accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
 }
 
 static void window_unload(Window *window) {
   text_layer_destroy(text_layer);
+}
+
+static void timer_callback(void *data) {
+	AccelData accel = (AccelData) {.x = 0, .y = 0, .z = 0}
+	accel_service_peek(&accel);
+	// two dimensions for now
+	int16_t x_accel = accel.x;
+	int16_t y_accel = accel.y;
+	char x_accel_string[5];
+	char y_accel_string[5];
+	snprintf(x_accel_string, 5, "%d ", x_accel);
+	snprintf(y_accel_string, 5, "%d ", y_accel);
+	text_layer_set_text(text_layer, x_accel_string);
 }
 
 static void init(void) {
@@ -51,21 +61,20 @@ static void init(void) {
   });
   const bool animated = true;
   window_stack_push(window, animated);
+	
+	accel_data_service_subscribe(10, &accel_data_handler);
+	accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
+	
+	timer = app_timer_register(100, timer_callback, NULL);
 }
 
 static void deinit(void) {
+	accel_data_service_unsubscribe();
   window_destroy(window);
 }
 
 static void accel_data_handler(AccelData *data, uint32_t num_samples) {
-	// two dimensions for now
-	int16_t x_accel = data->x;
-	int16_t y_accel = data->y;
-	char x_accel_string[5];
-	char y_accel_string[5];
-	snprintf(x_accel_string, 5, "%d ", x_accel);
-	snprintf(y_accel_string, 5, "%d ", y_accel);
-	text_layer_set_text(text_layer, x_accel_string);
+	//
 }
 
 int main(void) {
