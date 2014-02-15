@@ -1,4 +1,5 @@
 #include "pebble.h"
+#include <string.h>
 
 static Window *window;
 
@@ -8,40 +9,27 @@ static TextLayer *text_layer;
 
 static char accel_string[10];
 
-static void out_sent_handler(DictionaryIterator *sent, void *context) {
-	app_message_outbox_release();
-}
-
-static void out_fail_handler(DictionaryIterator *failed, AppMessageResult reason, void *context) {
-	app_message_outbox_release();
-}
-
-static void in_rcv_handler(void *context, AppMessageResult reason) {
-	
-}
-
-static void in_drp_handler(void *context, AppMessageResult reason) {
-	
-}
-
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
   accel_service_peek(&accel);
 	
-	static DictionaryIterator *iter;
-	app_message_outbox_get(&iter);
+	DictionaryIterator *iter;
+	app_message_outbox_begin(&iter);
 	
-	char x[1] = "x";
-	char y[1] = "y";
+	string x_key = "x";
+	string y_key = "y";
 	
 	char accel_x_string[5]; 
 	char accel_y_string[5];
 	snprintf(accel_x_string, 5, "%d", accel.x);
 	snprintf(accel_y_string, 5, "%d", accel.y);
 	
-	dict_write_data(&iter, x, accel_x_string);
-	dict_write_data(&iter, y, accel_y_string);
+	Tuplet x_value_tuplet = TupletCString(x, accel_x_string);
+	Tuplet y_value_tuplet = TupletCString(y, accel_y_string);
+	
+	dict_write_tuplet(iter, &x_value_tuplet);
+	dict_write_tuplet(iter, &y_value_tuplet);
 	
 	app_message_outbox_send();
 		
