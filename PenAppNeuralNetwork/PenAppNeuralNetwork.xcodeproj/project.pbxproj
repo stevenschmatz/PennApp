@@ -28,6 +28,9 @@
 		D703F98C18AF1179004665E4 /* PenAppNeuralNetwork */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PenAppNeuralNetwork; sourceTree = BUILT_PRODUCTS_DIR; };
 		D703F98F18AF1179004665E4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D703F99118AF1179004665E4 /* PenAppNeuralNetwork.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PenAppNeuralNetwork.1; sourceTree = "<group>"; };
+		D703F99818AF16E6004665E4 /* CollectedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectedData.h; sourceTree = "<group>"; };
+		D703F99918AF17C1004665E4 /* SampledData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampledData.h; sourceTree = "<group>"; };
+		D703F99A18AF18B9004665E4 /* SampleVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleVector.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				D703F98F18AF1179004665E4 /* main.cpp */,
+				D703F99918AF17C1004665E4 /* SampledData.h */,
+				D703F99A18AF18B9004665E4 /* SampleVector.h */,
+				D703F99818AF16E6004665E4 /* CollectedData.h */,
 				D703F99118AF1179004665E4 /* PenAppNeuralNetwork.1 */,
 			);
 			path = PenAppNeuralNetwork;
