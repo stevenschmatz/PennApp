@@ -11,7 +11,7 @@ void out_sent_handler(DictionaryIterator *sent, void *context) {
 	
 }
 
-void out_failed_handler(DictionaryIterator *failed, void *context) {
+void out_failed_handler(DictionaryIterator *failed, AppMessageResult reason, void *context) {
 	
 }
 
