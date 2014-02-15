@@ -1,6 +1,6 @@
 #include "pebble.h"
 
-static Window *window;
+/*static Window *window;
 
 static AppTimer *timer;
 
@@ -61,4 +61,4 @@ int main(void) {
   init();
   app_event_loop();
   deinit();
-}
+}*/
