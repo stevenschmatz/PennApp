@@ -65,7 +65,7 @@ static void accel_data_handler(AccelData *data, uint32_t num_samples) {
 	char y_accel_string[5];
 	snprintf(x_accel_string, 5, "%d ", x_accel);
 	snprintf(y_accel_string, 5, "%d ", y_accel);
-	text_layer_set_text(text_layer, x_accel);
+	text_layer_set_text(text_layer, x_accel_string);
 }
 
 int main(void) {
