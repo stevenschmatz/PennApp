@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import <PebbleKit/PebbleKit.h>
 
 @implementation AppDelegate
 
+    PBWatch *connectedWatch;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    connectedWatch = [[PBPebbleCentral defaultCentral] lastConnectedWatch];
+    NSLog(@"Last connected watch: %@", connectedWatch);
     return YES;
 }
 							

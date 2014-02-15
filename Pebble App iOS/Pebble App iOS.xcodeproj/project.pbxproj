@@ -231,6 +231,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Schmatz;
 				TargetAttributes = {
+					BA52D6FF18AFFF3500F401F1 = {
+						DevelopmentTeam = S57X9JL8K7;
+					};
 					BA52D72018AFFF3500F401F1 = {
 						TestTargetID = BA52D6FF18AFFF3500F401F1;
 					};
@@ -410,6 +413,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevenschmatz/Desktop/PennApp/Pebble\\ App\\ iOS",
@@ -419,6 +424,7 @@
 				INFOPLIST_FILE = "Pebble App iOS/Pebble App iOS-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -428,6 +434,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/stevenschmatz/Desktop/PennApp/Pebble\\ App\\ iOS",
@@ -437,6 +445,7 @@
 				INFOPLIST_FILE = "Pebble App iOS/Pebble App iOS-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -502,6 +511,7 @@
 				BA52D73418AFFF3500F401F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA52D73518AFFF3500F401F1 /* Build configuration list for PBXNativeTarget "Pebble App iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +520,7 @@
 				BA52D73718AFFF3500F401F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
