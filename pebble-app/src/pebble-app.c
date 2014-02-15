@@ -4,14 +4,14 @@ static Window *window;
 
 static AppTimer *timer;
 
-static TextLayer *tl;
+static TextLayer *text_layer;
 
 static void timer_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
 
   accel_service_peek(&accel);
 	
-	text_layer_set_text(tl, "Accelerated.");
+	text_layer_set_text(text_layer, "Accelerated.");
 
   timer = app_timer_register(100, timer_callback, NULL);
 }
@@ -28,10 +28,6 @@ static void window_load(Window *window) {
 	text_layer_set_text(text_layer, "Move me around");
 	text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
-
-  for (int i = 0; i < NUM_DISCS; i++) {
-    disc_init(&discs[i]);
-  }
 }
 
 static void window_unload(Window *window) {
