@@ -5,6 +5,8 @@ static Window *window;
 
 static AppTimer *timer;
 
+static int isMoving;
+
 void out_sent_handler(DictionaryIterator *sent, void *context) {
 	
 }
@@ -26,20 +28,33 @@ static void timer_callback(void *data) {
 
   accel_service_peek(&accel);
 	
-	DictionaryIterator *iter;
+	/*DictionaryIterator *iter;
 	app_message_outbox_begin(&iter);
 	
 	Tuplet x_value_tuplet = TupletInteger(1, accel.x);
 	Tuplet y_value_tuplet = TupletInteger(2, accel.y);
 	
 	static char accel_x_string[8];
-	static char accel_y_string[8];
+	static char accel_y_string[8];*/
 	
 	snprintf(accel_x_string, 8, "x: %d", accel.x);
 	snprintf(accel_y_string, 8, "y: %d", accel.y);
 	
-	app_log(1, "pebble-app.c", 43, accel_x_string);
-	app_log(1, "pebble-app.c", 44, accel_y_string);
+	if(accel.x > 25 && accel.y > 25) {
+		app_log(1, "pebble-app.c", 43, accel_x_string);
+		app_log(1, "pebble-app.c", 44, accel_y_string);
+		if(!isMoving) {
+			isMoving = 1;
+			app_log(1, "pebble-app.c", 48, "START");
+		}
+	}
+	else {
+		if(isMoving) {
+			isMoving = 0;
+			app_log(1, "pebble-app.c", 53, "STOP");
+		}
+	}
+	
 	
 	/*dict_write_tuplet(iter, &x_value_tuplet);
 	dict_write_tuplet(iter, &y_value_tuplet);
