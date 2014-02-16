@@ -1,8 +1,10 @@
-var iterate_x_queue = require('run_utils').iterate_x_queue;
-var iterate_y_queue = require('run_utils').iterate_y_queue;
-var x_stable_condition = require('run_utils').x_stable_condition;
-var y_stable_condition = require('run_utils').y_stable_condition;
-var mean = require('run_utils').mean;
+var iterate_x_queue = require('./run_utils').iterate_x_queue;
+var iterate_y_queue = require('./run_utils').iterate_y_queue;
+var x_stable_condition = require('./run_utils').x_stable_condition;
+var y_stable_condition = require('./run_utils').y_stable_condition;
+var mean = require('./run_utils').mean;
+var sample = require('./sample');
+var neuralNetwork = require('./NeuralNetwork');
 
 global.x_queue = [];
 global.y_queue = [];
@@ -31,8 +33,7 @@ process.stdin.on('data', function(input_text) {
 		}
 		else {
 			if(iterate_x_queue(global.x_queue, current_pair['x'], 50) == 0 || iterate_y_queue(global.y_queue, current_pair['y'], 50) == 0) {
-				var sampledData = sample.split(currentChar, 5);
-				require('fs').writeFile('stuff.txt', sampledData);
+				var sampledData = sample.split(current_char, 5);
 				var result = neuralNetwork.accept(sampledData);
 				current_char = [];
 			}
