@@ -1,4 +1,6 @@
-var SAMPLING_RATE = 16;
+var brain = require('brain');
+
+var SAMPLING_RATE = 5;
 var nets = [];
 
 for(var i = 0; i < SAMPLING_RATE; i++) {
@@ -14,7 +16,7 @@ function train(sampledData, char) {
 }
 
 function accept(sampledData) {
-	for(int i = 0; i < SAMPLING_RATE; i++) {
+	for(var i = 0; i < SAMPLING_RATE; i++) {
 		var out = nets[i].run(sampledData[i]);
 	}
 	return decide(nets);
