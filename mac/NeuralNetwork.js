@@ -22,5 +22,10 @@ function accept(sampledData) {
 	return decide(nets);
 }
 
+function nets() {
+	return nets;
+}
+
 exports.train = train;
 exports.accept = accept;
+exports.nets = nets;

@@ -33,3 +33,11 @@ process.stdin.on('data', function(input_text) {
 process.stderr.on('data', function(data) {
 	console.log(data.toString('ascii'));
 });
+
+process.on('exit', function(code) {
+	var nets = neuralNetwork.nets();
+	for(int i = 0; i < nets.length(); i++) {
+		var netjson = nets[i].toJSON();
+		require('fs').writeFile("~/pennapp/mac/training/net"+i);
+	}
+});

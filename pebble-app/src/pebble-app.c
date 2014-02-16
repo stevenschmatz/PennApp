@@ -2,12 +2,18 @@
 #include <string.h>
 
 static Window *window;
-
 static AppTimer *timer;
+static TextLayer *text_layer;
+
+static char *characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.!?";
+static unsigned int current_char_index = 0;
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-	char change_string[6] = "CHANGE";
-  app_log(1, "pebble-app.c", 25, change_string);
+		char change_string[6] = "CHANGE";
+	  app_log(1, "pebble-app.c", 14, change_string);
+		char text_string[2];
+		snprintf(text_string, 1, "%c", characters[current_char_index++]);
+		text_layer_set_text(text_layer, text_string);
 }
 
 static void click_config_provider(void *context) {
@@ -38,6 +44,10 @@ static void handle_accel(AccelData *accel_data, uint32_t num_samples) {
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
+
+  text_layer = text_layer_create((GRect) { .origin = { 0, 72 }, .size = { bounds.size.w, 20 } });
+  text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
+  layer_add_child(window_layer, text_layer_get_layer(text_layer));
 }
 
 static void window_unload(Window *window) {
@@ -45,6 +55,9 @@ static void window_unload(Window *window) {
 }
 
 static void init(void) {
+	//characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.!?";
+	//current_char_index = 0;
+	
   window = window_create();
   window_set_window_handlers(window, (WindowHandlers) {
     .load = window_load,
