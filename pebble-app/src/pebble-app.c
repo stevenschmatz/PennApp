@@ -5,8 +5,6 @@ static Window *window;
 
 static AppTimer *timer;
 
-static TextLayer *text_layer;
-
 void out_sent_handler(DictionaryIterator *sent, void *context) {
 	
 }
@@ -40,8 +38,8 @@ static void timer_callback(void *data) {
 	snprintf(accel_x_string, 8, "x: %d", accel.x);
 	snprintf(accel_y_string, 8, "y: %d", accel.y);
 	
-	app_log(1, "pebble-app.c", 43, accel_x_string);
-	app_log(1, "pebble-app.c", 44, accel_y_string);
+	/*app_log(1, "pebble-app.c", 43, accel_x_string);
+	app_log(1, "pebble-app.c", 44, accel_y_string);*/
 	
 	dict_write_tuplet(iter, &x_value_tuplet);
 	dict_write_tuplet(iter, &y_value_tuplet);
@@ -58,15 +56,10 @@ static void handle_accel(AccelData *accel_data, uint32_t num_samples) {
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
-
-  text_layer = text_layer_create((GRect) { .origin = {0, 72}, .size = {bounds.size.w, 50}});
-	text_layer_set_text(text_layer, "Move me around");
-	text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
-  layer_add_child(window_layer, text_layer_get_layer(text_layer));
 }
 
 static void window_unload(Window *window) {
-  text_layer_destroy(text_layer);
+ 	//
 }
 
 static void init(void) {
