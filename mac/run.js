@@ -66,8 +66,9 @@ process.stdin.on('data', function(input_text) {
 				current_pair = {};
 			}
 			// 
-		if(iterate_x_queue(curr, 50) && iterate_y_queue(curr, 50)) {
+		if(iterate_x_queue(current_pair['x'], 50) && iterate_y_queue(current_pair['y'], 50)) {
 			var sampledData = sample.split(currentChar, 5);
+			require('fs').writeFile('stuff.txt', sampledData);
 			var result = neuralNetwork.accept(sampledData);
 			current_char = [];
 		}
