@@ -26,6 +26,11 @@ process.stdin.on('data', function(input_text) {
 		else {
 			var sampledData = sample.split(current_char_training_set, 5);
 			var result = neuralNetwork.train(sampledData, currentChar);
+			var nets = neuralNetwork.nets();
+			for(var i = 0; i < nets.length(); i++) {
+				var netjson = nets[i].toJSON();
+				require('fs').writeFileSync("~/pennapp/mac/training/net"+i, netjson);
+			}
 			current_char_training_set = [];
 		}
 });
@@ -35,9 +40,5 @@ process.stderr.on('data', function(data) {
 });
 
 process.on('exit', function(code) {
-	var nets = neuralNetwork.nets();
-	for(int i = 0; i < nets.length(); i++) {
-		var netjson = nets[i].toJSON();
-		require('fs').writeFile("~/pennapp/mac/training/net"+i);
-	}
+	
 });
