@@ -22,3 +22,5 @@ function accept(sampledData) {
 	return decide(nets);
 }
 
+exports.train = train;
+exports.accept = accept;
