@@ -38,13 +38,13 @@ static void timer_callback(void *data) {
 	snprintf(accel_x_string, 8, "x: %d", accel.x);
 	snprintf(accel_y_string, 8, "y: %d", accel.y);
 	
-	/*app_log(1, "pebble-app.c", 43, accel_x_string);
-	app_log(1, "pebble-app.c", 44, accel_y_string);*/
+	app_log(1, "pebble-app.c", 43, accel_x_string);
+	app_log(1, "pebble-app.c", 44, accel_y_string);
 	
-	dict_write_tuplet(iter, &x_value_tuplet);
+	/*dict_write_tuplet(iter, &x_value_tuplet);
 	dict_write_tuplet(iter, &y_value_tuplet);
 	
-	app_message_outbox_send();
+	app_message_outbox_send();*/
 		
   timer = app_timer_register(200, timer_callback, NULL);
 }
